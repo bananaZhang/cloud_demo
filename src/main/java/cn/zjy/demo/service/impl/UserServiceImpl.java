@@ -21,12 +21,16 @@ public class UserServiceImpl implements UserService {
     private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
+    private OperLogHandler operLogHandler;
+
+    @Autowired
     private UserDao userDao;
 
     @Override
     public User getUser(Integer userId) {
         logger.debug("getUser...");
-        new OperLogHandler().doAsync();
+        operLogHandler.doAsync();
+        logger.debug("after operLog...");
         return new User();
     }
 }

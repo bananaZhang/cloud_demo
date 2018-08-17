@@ -16,11 +16,11 @@ public class OperLogHandler {
 
     private static Logger logger = LoggerFactory.getLogger(OperLogHandler.class);
 
-    @Async("singleThreadPool")
+    @Async
     public void doAsync() {
         logger.debug("start do task...");
         try {
-            Thread.sleep(3000L);
+            Thread.sleep(5000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
