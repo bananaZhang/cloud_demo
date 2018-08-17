@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="patt" value="%d{yyyyMMdd HH:mm:ss.SSS} [%-1thread] [%-5level] %logger.%M\\(%F:%L\\) - %msg%n"/>
+
+    <appender name="std" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${patt}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="cn.zjy.demo" level="DEBUG" additivity="false">
+        <appender-ref ref="std"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="std"/>
+    </root>
+</configuration>
