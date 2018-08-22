@@ -1,5 +1,6 @@
 package cn.zjy.demo.controller;
 
+import cn.zjy.demo.domain.User;
 import cn.zjy.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class TestController {
     private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(@RequestParam("userId") Integer userId) {
-        return userService.getUser(userId).toString();
+    public User login(@RequestParam("userId") Integer userId) {
+        return userService.getUser(userId);
     }
 }

@@ -28,9 +28,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(Integer userId) {
-        logger.debug("getUser...");
-        operLogHandler.doAsync();
-        logger.debug("after operLog...");
-        return new User();
+//        logger.debug("getUser...");
+//        operLogHandler.doAsync();
+//        logger.debug("after operLog...");
+        return userDao.findByUserId(userId);
     }
 }

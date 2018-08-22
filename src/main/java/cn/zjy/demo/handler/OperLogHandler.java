@@ -16,6 +16,9 @@ public class OperLogHandler {
 
     private static Logger logger = LoggerFactory.getLogger(OperLogHandler.class);
 
+    /**
+     * 方法加上Async即可使用线程池
+     */
     @Async
     public void doAsync() {
         logger.debug("start do task...");
