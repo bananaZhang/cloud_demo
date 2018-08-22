@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 /**
  * @author ZJY
  * @ClassName: UserServiceImpl
@@ -22,7 +23,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private OperLogHandler operLogHandler;
-
     @Autowired
     private UserDao userDao;
 
@@ -31,6 +31,6 @@ public class UserServiceImpl implements UserService {
 //        logger.debug("getUser...");
 //        operLogHandler.doAsync();
 //        logger.debug("after operLog...");
-        return userDao.findByUserId(userId);
+        return userDao.queryUserByUserId(userId);
     }
 }

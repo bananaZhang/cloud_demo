@@ -4,6 +4,7 @@ import cn.zjy.demo.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Service;
 
 /**
  * @author ZJY
@@ -12,7 +13,7 @@ import org.apache.ibatis.annotations.Select;
  * @date 2018/8/1 14:26
  */
 @Mapper
+@Service
 public interface UserDao {
-    @Select("Select * From demo_user Where user_id = #{userId}")
-    User findByUserId(@Param("userId") Integer userId);
+    User queryUserByUserId(@Param("userId") Integer userId);
 }
