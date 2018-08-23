@@ -1,5 +1,6 @@
 package cn.zjy.demo.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,9 @@ import java.util.Date;
  * @Description: User
  * @date 2018/8/1 14:18
  */
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 7212856431205663278L;
 
     private Integer userId;
 

@@ -1,14 +1,13 @@
 package cn.zjy.demo.controller;
 
+import cn.zjy.demo.common.annotation.OperationLog;
 import cn.zjy.demo.domain.User;
 import cn.zjy.demo.service.UserService;
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author ZJY
@@ -25,8 +24,10 @@ public class TestController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public User login(@RequestParam("userId") Integer userId) {
+    @OperationLog(module = "LOGIN")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public User login(@RequestBody JSONObject jsonObject) {
+        Integer userId = jsonObject.getInteger("userId");
         return userService.getUser(userId);
     }
 }

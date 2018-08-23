@@ -1,4 +1,4 @@
-package cn.zjy.demo.config;
+package cn.zjy.demo.common.config;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Configuration;
