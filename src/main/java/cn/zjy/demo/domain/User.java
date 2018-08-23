@@ -1,5 +1,7 @@
 package cn.zjy.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,8 +25,13 @@ public class User implements Serializable {
 
     private String otherContact;
 
+    /**
+     * jackson是springboot默认的json序列化工具，加上该配置可以指定日期序列化的格式，不会变成时间戳的格式
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
 
     public Integer getUserId() {
