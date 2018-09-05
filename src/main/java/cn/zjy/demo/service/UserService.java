@@ -2,6 +2,8 @@ package cn.zjy.demo.service;
 
 import cn.zjy.demo.domain.User;
 
+import java.util.List;
+
 /**
  * @author ZJY
  * @ClassName: UserService
@@ -12,4 +14,7 @@ public interface UserService {
 
     public User getUser(Integer userId);
 
+    List<User> queryAllUser();
+
+	int modifyUserName(Integer userId, String name);
 }

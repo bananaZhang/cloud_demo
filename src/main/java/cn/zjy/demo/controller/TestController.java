@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author ZJY
  * @ClassName: TestController
@@ -29,5 +31,16 @@ public class TestController {
     public User login(@RequestBody JSONObject jsonObject) {
         Integer userId = jsonObject.getInteger("userId");
         return userService.getUser(userId);
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public User logout(@RequestBody JSONObject jsonObject) {
+        Integer userId = jsonObject.getInteger("userId");
+        return userService.getUser(userId);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    public List<User> getUserList() {
+        return userService.queryAllUser();
     }
 }

@@ -11,7 +11,28 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
-    <select id="queryUserByUserId" resultMap="BaseMap">
-        SELECT * FROM demo_user WHERE user_id = #{userId}
+    <select id="queryAll" resultMap="BaseMap">
+        SELECT * FROM demo_user;
     </select>
+
+    <select id="queryUserByUserId" resultMap="BaseMap">
+        SELECT * FROM demo_user WHERE user_id = #{userId} FOR UPDATE;
+    </select>
+
+    <select id="queryUserByMobile" resultMap="BaseMap">
+        SELECT * FROM demo_user WHERE mobile = #{mobile} FOR UPDATE;
+    </select>
+
+    <update id="updateUser" parameterType="cn.zjy.demo.domain.User">
+        UPDATE demo_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != '' ">
+                name = #{name},
+            </if>
+            <if test="email != null and email != '' ">
+                email = #{email},
+            </if>
+        </trim>
+        WHERE user_id = #{userId}
+    </update>
 </mapper>

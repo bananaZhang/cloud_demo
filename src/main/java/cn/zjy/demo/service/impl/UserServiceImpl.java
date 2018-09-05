@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 /**
@@ -27,10 +30,37 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
+    @Transactional
     public User getUser(Integer userId) {
 //        logger.debug("getUser...");
 //        operLogHandler.doAsync();
 //        logger.debug("after operLog...");
-        return userDao.queryUserByUserId(userId);
+
+
+        User user = userDao.queryUserByUserId(userId);// 事务提交后才会释放锁，且不会阻塞整表查询（读的是更新前的数据）
+
+	    user.setName("测试");
+	    userDao.updateUser(user);
+
+        logger.debug("start sleep...");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        logger.debug("end sleep...");
+        return user;
+    }
+
+    @Override
+    public List<User> queryAllUser() {
+        return userDao.queryAll();
+    }
+
+    @Override
+    public int modifyUserName(Integer userId, String name) {
+        User user = userDao.queryUserByUserId(userId);
+        user.setName(name);
+        return userDao.updateUser(user);
     }
 }

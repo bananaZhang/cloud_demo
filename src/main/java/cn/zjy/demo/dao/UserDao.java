@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author ZJY
  * @ClassName: UserDao
@@ -16,4 +18,10 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserDao {
     User queryUserByUserId(@Param("userId") Integer userId);
+
+    User queryUserByMobile(@Param("mobile") String mobile);
+
+    List<User> queryAll();
+
+    int updateUser(User user);
 }
