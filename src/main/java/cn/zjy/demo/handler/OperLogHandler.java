@@ -19,7 +19,7 @@ public class OperLogHandler {
     /**
      * 方法加上Async即可使用线程池
      */
-    @Async
+    @Async("testThreadPool")
     public void doAsync() {
         logger.debug("start do task...");
         try {

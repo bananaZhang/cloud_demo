@@ -14,7 +14,9 @@ public interface UserService {
 
     public User getUser(Integer userId);
 
-    List<User> queryAllUser();
+	void threadPool();
+
+	List<User> queryAllUser();
 
 	int modifyUserName(Integer userId, String name);
 }

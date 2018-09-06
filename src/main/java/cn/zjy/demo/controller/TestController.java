@@ -43,4 +43,10 @@ public class TestController {
     public List<User> getUserList() {
         return userService.queryAllUser();
     }
+
+    @RequestMapping(value = "/thread")
+    public String threadTest() {
+		userService.threadPool();
+		return "success";
+    }
 }

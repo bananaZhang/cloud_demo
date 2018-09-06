@@ -32,9 +32,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User getUser(Integer userId) {
-//        logger.debug("getUser...");
-//        operLogHandler.doAsync();
-//        logger.debug("after operLog...");
 
 
         User user = userDao.queryUserByUserId(userId);// 事务提交后才会释放锁，且不会阻塞整表查询（读的是更新前的数据）
@@ -50,6 +47,13 @@ public class UserServiceImpl implements UserService {
         }
         logger.debug("end sleep...");
         return user;
+    }
+
+    @Override
+    public void threadPool() {
+        logger.debug("getUser...");
+        operLogHandler.doAsync();
+        logger.debug("after operLog...");
     }
 
     @Override
