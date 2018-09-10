@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -26,10 +27,24 @@ public class TestController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private HttpServletRequest request;
+
+    private ThreadLocal<String> token = new ThreadLocal<>();
+
+    /**
+     * 会在进入其他方法之前调用这个init方法
+     */
+    @ModelAttribute
+    public void init() {
+        token.set(request.getHeader("token"));
+    }
+
     @OperationLog(module = "LOGIN")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User login(@RequestBody JSONObject jsonObject) {
         Integer userId = jsonObject.getInteger("userId");
+        logger.debug("token = {}", token.get());
         return userService.getUser(userId);
     }
 
