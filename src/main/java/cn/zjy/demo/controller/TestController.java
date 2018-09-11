@@ -59,6 +59,16 @@ public class TestController {
         return userService.queryAllUser();
     }
 
+    /**
+     * 可通过@RequestHeader获取请求header中的值
+     * 可通过@CookieValue获取Cookie中的值
+     */
+    @RequestMapping(value = "/anno", method = RequestMethod.POST)
+    public String testAnnotationGetToken(@RequestHeader("token") String headToken) {
+        logger.debug(headToken);
+        return "success";
+    }
+
     @RequestMapping(value = "/thread")
     public String threadTest() {
 		userService.threadPool();
