@@ -35,4 +35,9 @@
         </trim>
         WHERE user_id = #{userId}
     </update>
+
+    <insert id="addUser" parameterType="cn.zjy.demo.domain.User">
+        INSERT INTO demo_user(mobile, name, email, other_contact, create_time, update_time, status)
+        VALUES (#{mobile}, #{name}, #{email}, #{otherContact}, #{createTime}, #{updateTime}, #{status})
+    </insert>
 </mapper>

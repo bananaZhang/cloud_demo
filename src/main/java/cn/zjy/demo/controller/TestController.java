@@ -2,6 +2,7 @@ package cn.zjy.demo.controller;
 
 import cn.zjy.demo.common.annotation.OperationLog;
 import cn.zjy.demo.domain.User;
+import cn.zjy.demo.req.OrgUserAddReq;
 import cn.zjy.demo.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
@@ -73,5 +74,15 @@ public class TestController {
     public String threadTest() {
 		userService.threadPool();
 		return "success";
+    }
+
+    /**
+     * @function 测试请求类中的内部类能不能映射到
+     * @author ZJY 2018/10/29 20:01
+     */
+    @RequestMapping(value = "/inner", method = RequestMethod.POST)
+    public String testInnerClassReq(@RequestBody OrgUserAddReq req) {
+        System.out.println(req);
+        return "success";
     }
 }

@@ -19,4 +19,8 @@ public interface UserService {
 	List<User> queryAllUser();
 
 	int modifyUserName(Integer userId, String name);
+
+	int addUser(User user);
+
+	User getUserByMobile(String mobile);
 }

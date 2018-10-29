@@ -67,4 +67,14 @@ public class UserServiceImpl implements UserService {
         user.setName(name);
         return userDao.updateUser(user);
     }
+
+    @Override
+    public int addUser(User user) {
+        return userDao.addUser(user);
+    }
+
+    @Override
+    public User getUserByMobile(String mobile) {
+        return userDao.queryUserByMobile(mobile);
+    }
 }

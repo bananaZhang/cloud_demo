@@ -24,4 +24,6 @@ public interface UserDao {
     List<User> queryAll();
 
     int updateUser(User user);
+
+    int addUser(User user);
 }
