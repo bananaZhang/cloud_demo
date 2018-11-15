@@ -4,8 +4,7 @@ import cn.zjy.demo.dao.UserDao;
 import cn.zjy.demo.domain.User;
 import cn.zjy.demo.handler.OperLogHandler;
 import cn.zjy.demo.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,9 +19,8 @@ import java.util.List;
  * @date 2018/8/14 10:13
  */
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
-
-    private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private OperLogHandler operLogHandler;
@@ -36,24 +34,24 @@ public class UserServiceImpl implements UserService {
 
         User user = userDao.queryUserByUserId(userId);// 事务提交后才会释放锁，且不会阻塞整表查询（读的是更新前的数据）
 
-	    user.setName("测试");
+	    user.setName("测试");user.toString();
 	    userDao.updateUser(user);
 
-        logger.debug("start sleep...");
+        log.debug("start sleep...");
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        logger.debug("end sleep...");
+        log.debug("end sleep...");
         return user;
     }
 
     @Override
     public void threadPool() {
-        logger.debug("getUser...");
+        log.debug("getUser...");
         operLogHandler.doAsync();
-        logger.debug("after operLog...");
+        log.debug("after operLog...");
     }
 
     @Override

@@ -5,8 +5,7 @@ import cn.zjy.demo.domain.User;
 import cn.zjy.demo.req.OrgUserAddReq;
 import cn.zjy.demo.service.UserService;
 import com.alibaba.fastjson.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +20,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/demo/test")
+@Slf4j
 public class TestController {
-
-    private static Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @Autowired
     private UserService userService;
@@ -45,7 +43,7 @@ public class TestController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User login(@RequestBody JSONObject jsonObject) {
         Integer userId = jsonObject.getInteger("userId");
-        logger.debug("token = {}", token.get());
+        log.debug("token = {}", token.get());
         return userService.getUser(userId);
     }
 
@@ -66,7 +64,7 @@ public class TestController {
      */
     @RequestMapping(value = "/anno", method = RequestMethod.POST)
     public String testAnnotationGetToken(@RequestHeader("token") String headToken) {
-        logger.debug(headToken);
+        log.debug(headToken);
         return "success";
     }
 

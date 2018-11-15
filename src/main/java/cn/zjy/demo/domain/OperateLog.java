@@ -1,5 +1,10 @@
 package cn.zjy.demo.domain;
 
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,89 +14,30 @@ import java.util.Date;
  * @Description: OperateLog
  * @date 2018/8/22 20:09
  */
+@Table(name = "demo_operate_log")
+@Data
 public class OperateLog implements Serializable {
     private static final long serialVersionUID = 4250390307833210410L;
 
+    @Id
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "user_id")
     private Integer userId;
 
+    @Column(name = "oper")
     private String oper;
 
+    @Column(name = "error_desc")
     private String errorDesc;
 
+    @Column(name = "oper_desc")
     private String operDesc;
 
+    @Column(name = "status")
     private Integer status;
 
+    @Column(name = "create_time")
     private Date createTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getOper() {
-        return oper;
-    }
-
-    public void setOper(String oper) {
-        this.oper = oper;
-    }
-
-    public String getErrorDesc() {
-        return errorDesc;
-    }
-
-    public void setErrorDesc(String errorDesc) {
-        this.errorDesc = errorDesc;
-    }
-
-    public String getOperDesc() {
-        return operDesc;
-    }
-
-    public void setOperDesc(String operDesc) {
-        this.operDesc = operDesc;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    @Override
-    public String toString() {
-        return "OperateLog{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", oper='" + oper + '\'' +
-                ", errorDesc='" + errorDesc + '\'' +
-                ", operDesc='" + operDesc + '\'' +
-                ", status=" + status +
-                ", createTime=" + createTime +
-                '}';
-    }
 }
