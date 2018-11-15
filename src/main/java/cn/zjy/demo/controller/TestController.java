@@ -1,6 +1,7 @@
 package cn.zjy.demo.controller;
 
 import cn.zjy.demo.common.annotation.OperationLog;
+import cn.zjy.demo.controller.base.BaseController;
 import cn.zjy.demo.domain.User;
 import cn.zjy.demo.req.OrgUserAddReq;
 import cn.zjy.demo.service.UserService;
@@ -9,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -21,23 +21,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/demo/test")
 @Slf4j
-public class TestController {
+public class TestController extends BaseController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private HttpServletRequest request;
-
-    private ThreadLocal<String> token = new ThreadLocal<>();
-
-    /**
-     * 会在进入其他方法之前调用这个init方法
-     */
-    @ModelAttribute
-    public void init() {
-        token.set(request.getHeader("token"));
-    }
 
     @OperationLog(module = "LOGIN")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
