@@ -1,5 +1,7 @@
 package cn.zjy.demo.req;
 
+import lombok.Builder;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
  * @Description: OrgUserAddReq
  * @date 2018/10/29 19:24
  */
+@Builder
 public class OrgUserAddReq implements Serializable {
 
 	private static final long serialVersionUID = -7986693769744153793L;
