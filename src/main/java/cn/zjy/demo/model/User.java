@@ -1,4 +1,4 @@
-package cn.zjy.demo.domain;
+package cn.zjy.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

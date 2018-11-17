@@ -1,4 +1,4 @@
-package cn.zjy.demo.domain;
+package cn.zjy.demo.model;
 
 import lombok.Data;
 

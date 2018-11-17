@@ -1,7 +1,7 @@
 package cn.zjy.demo.service.impl;
 
 import cn.zjy.demo.dao.UserDao;
-import cn.zjy.demo.domain.User;
+import cn.zjy.demo.model.User;
 import cn.zjy.demo.handler.OperLogHandler;
 import cn.zjy.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;

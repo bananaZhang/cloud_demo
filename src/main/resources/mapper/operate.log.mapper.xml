@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.zjy.demo.dao.OperateLogDao">
-    <resultMap id="BaseMap" type="cn.zjy.demo.domain.OperateLog">
+    <resultMap id="BaseMap" type="cn.zjy.demo.model.OperateLog">
         <id property="id" column="id"/>
         <result property="userId" column="user_id"/>
         <result property="oper" column="oper"/>
@@ -11,7 +11,7 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
-    <insert id="save" parameterType="cn.zjy.demo.domain.OperateLog">
+    <insert id="save" parameterType="cn.zjy.demo.model.OperateLog">
         INSERT INTO demo_operate_log(user_id, oper, oper_desc, status, error_desc, create_time)
         VALUES (#{userId}, #{oper}, #{operDesc}, #{status}, #{errorDesc}, #{createTime});
     </insert>

@@ -1,6 +1,6 @@
 package cn.zjy.demo.service;
 
-import cn.zjy.demo.domain.OperateLog;
+import cn.zjy.demo.model.OperateLog;
 
 /**
  * @author ZJY

@@ -1,7 +1,7 @@
 package cn.zjy.demo.service.impl;
 
 import cn.zjy.demo.dao.OperateLogDao;
-import cn.zjy.demo.domain.OperateLog;
+import cn.zjy.demo.model.OperateLog;
 import cn.zjy.demo.service.OperateLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

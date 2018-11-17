@@ -1,7 +1,7 @@
 package cn.zjy.demo.common.aop;
 
 import cn.zjy.demo.common.annotation.OperationLog;
-import cn.zjy.demo.domain.OperateLog;
+import cn.zjy.demo.model.OperateLog;
 import cn.zjy.demo.service.OperateLogService;
 import cn.zjy.demo.util.IpUtil;
 import lombok.extern.slf4j.Slf4j;

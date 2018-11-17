@@ -1,9 +1,8 @@
 package cn.zjy.demo.dao;
 
-import cn.zjy.demo.domain.User;
+import cn.zjy.demo.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

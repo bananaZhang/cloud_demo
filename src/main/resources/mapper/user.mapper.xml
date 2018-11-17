@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.zjy.demo.dao.UserDao">
-    <resultMap id="BaseMap" type="cn.zjy.demo.domain.User">
+    <resultMap id="BaseMap" type="cn.zjy.demo.model.User">
         <result property="userId" column="user_id"/>
         <result property="mobile" column="mobile"/>
         <result property="name" column="name"/>
@@ -23,7 +23,7 @@
         SELECT * FROM demo_user WHERE mobile = #{mobile} FOR UPDATE;
     </select>
 
-    <update id="updateUser" parameterType="cn.zjy.demo.domain.User">
+    <update id="updateUser" parameterType="cn.zjy.demo.model.User">
         UPDATE demo_user
         <trim prefix="SET" suffixOverrides=",">
             <if test="name != null and name != '' ">
@@ -36,7 +36,7 @@
         WHERE user_id = #{userId}
     </update>
 
-    <insert id="addUser" parameterType="cn.zjy.demo.domain.User">
+    <insert id="addUser" parameterType="cn.zjy.demo.model.User">
         INSERT INTO demo_user(mobile, name, email, other_contact, create_time, update_time, status)
         VALUES (#{mobile}, #{name}, #{email}, #{otherContact}, #{createTime}, #{updateTime}, #{status})
     </insert>

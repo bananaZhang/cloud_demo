@@ -1,6 +1,6 @@
 package cn.zjy.demo;
 
-import cn.zjy.demo.domain.User;
+import cn.zjy.demo.model.User;
 import cn.zjy.demo.service.UserService;
 import org.junit.Before;
 import org.junit.Test;

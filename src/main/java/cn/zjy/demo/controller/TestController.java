@@ -2,7 +2,7 @@ package cn.zjy.demo.controller;
 
 import cn.zjy.demo.common.annotation.OperationLog;
 import cn.zjy.demo.controller.base.BaseController;
-import cn.zjy.demo.domain.User;
+import cn.zjy.demo.model.User;
 import cn.zjy.demo.req.OrgUserAddReq;
 import cn.zjy.demo.service.UserService;
 import com.alibaba.fastjson.JSONObject;
