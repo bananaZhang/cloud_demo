@@ -1,6 +1,7 @@
 package cn.zjy.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import java.util.Date;
  */
 @Table(name = "demo_user")
 @Data
+@Builder
 public class User implements Serializable {
 
     private static final long serialVersionUID = 7212856431205663278L;

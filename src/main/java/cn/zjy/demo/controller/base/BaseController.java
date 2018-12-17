@@ -13,16 +13,20 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class BaseController {
 
-	@Autowired
-	protected HttpServletRequest request;
+    @Autowired
+    protected HttpServletRequest request;
 
-	protected ThreadLocal<String> token = new ThreadLocal<>();
+    protected ThreadLocal<String> token = new ThreadLocal<>();
 
-	/**
-	 * 会在进入其他方法之前调用这个init方法
-	 */
-	@ModelAttribute
-	public void init() {
-		token.set(request.getHeader("token"));
-	}
+    /**
+     * 会在进入其他方法之前调用这个init方法
+     */
+    @ModelAttribute
+    public void init() {
+        token.set(request.getHeader("token"));
+    }
+
+    protected String getToken() {
+        return token.get();
+    }
 }

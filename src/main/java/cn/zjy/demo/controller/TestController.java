@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ZJY
@@ -57,8 +59,8 @@ public class TestController extends BaseController {
 
     @RequestMapping(value = "/thread")
     public String threadTest() {
-		userService.threadPool();
-		return "success";
+        userService.threadPool();
+        return "success";
     }
 
     /**
@@ -69,5 +71,13 @@ public class TestController extends BaseController {
     public String testInnerClassReq(@RequestBody OrgUserAddReq req) {
         System.out.println(req);
         return "success";
+    }
+
+    @RequestMapping(value = "/map", method = RequestMethod.POST)
+    public Map<String, String> getMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("111", "A");
+        map.put("222", "B");
+        return map;
     }
 }

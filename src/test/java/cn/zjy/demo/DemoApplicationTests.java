@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -22,16 +23,16 @@ public class DemoApplicationTests {
 
 	@Before
 	public void prepareData() {
-		User user = new User();
-		user.setMobile("110110110");
-		user.setName("test user");
-		user.setEmail("123@qq.com");
-		user.setOtherContact("123");
-		user.setCreateTime(new Date());
-		user.setUpdateTime(new Date());
-		user.setStatus(1);
-
-		userService.addUser(user);
+//		User user = new User();
+//		user.setMobile("110110110");
+//		user.setName("test user");
+//		user.setEmail("123@qq.com");
+//		user.setOtherContact("123");
+//		user.setCreateTime(new Date());
+//		user.setUpdateTime(new Date());
+//		user.setStatus(1);
+//
+//		userService.addUser(user);
 	}
 
 	@Transactional
@@ -41,6 +42,13 @@ public class DemoApplicationTests {
 		System.out.println(user);
 	}
 
+	@Transactional
+	@Test
+	public void queryAllUser() {
+		List<User> userList = userService.queryAllUser();
+		userList.sort((o1, o2) -> o2.getCreateTime().compareTo(o1.getCreateTime()));
 
+		System.out.println(userList);
+	}
 
 }
