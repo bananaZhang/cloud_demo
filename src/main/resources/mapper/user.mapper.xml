@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.zjy.demo.dao.UserDao">
     <resultMap id="BaseMap" type="cn.zjy.demo.model.User">
-        <result property="userId" column="user_id"/>
-        <result property="mobile" column="mobile"/>
-        <result property="name" column="name"/>
-        <result property="email" column="email"/>
-        <result property="otherContact" column="other_contact"/>
-        <result property="createTime" column="create_time"/>
-        <result property="updateTime" column="update_time"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="otherContact" column="other_contact" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
     </resultMap>
 
     <select id="queryAll" resultMap="BaseMap">
@@ -16,7 +17,7 @@
     </select>
 
     <select id="queryUserByUserId" resultMap="BaseMap">
-        SELECT * FROM demo_user WHERE user_id = #{userId} FOR UPDATE;
+        SELECT * FROM demo_user WHERE user_id = #{userId};
     </select>
 
     <select id="queryUserByMobile" resultMap="BaseMap">

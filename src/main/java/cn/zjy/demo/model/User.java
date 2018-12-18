@@ -1,8 +1,10 @@
 package cn.zjy.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
+import org.apache.ibatis.annotations.AutomapConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -19,7 +21,7 @@ import java.util.Date;
 @Table(name = "demo_user")
 @Data
 @Builder
-public class User implements Serializable {
+public class User {
 
     private static final long serialVersionUID = 7212856431205663278L;
 
@@ -52,4 +54,17 @@ public class User implements Serializable {
 
     @Column(name = "status")
     private Integer status;
+
+    @AutomapConstructor
+    public User(Integer userId, String mobile, String name, String email, String otherContact, Date createTime, Date updateTime, Integer status) {
+        this.userId = userId;
+        this.mobile = mobile;
+        this.name = name;
+        this.email = email;
+        this.otherContact = otherContact;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.status = status;
+    }
+
 }

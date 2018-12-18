@@ -37,13 +37,13 @@ public class UserServiceImpl implements UserService {
 	    user.setName("测试");user.toString();
 	    userDao.updateUser(user);
 
-        log.debug("start sleep...");
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        log.debug("end sleep...");
+//        log.debug("start sleep...");
+//        try {
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        log.debug("end sleep...");
         return user;
     }
 
