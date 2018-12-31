@@ -8,6 +8,12 @@
     如果处于空闲状态的时间超过了timeToIdleSeconds属性值，这个对象就会过期，EHCache将把它从缓存中清空。
     只有当eternal属性为false，该属性才有效。如果该属性值为0，则表示对象可以无限期地处于空闲状态
     -->
-    <cache name="userCache" maxEntriesLocalHeap="0" timeToIdleSeconds="300"/>
+    <cache name="userCache" maxEntriesLocalHeap="0" timeToIdleSeconds="300">
+        <!-- 指定缓存的可查询属性 -->
+        <searchable>
+            <searchAttribute name="mobile" class="cn.zjy.demo.cache.UserMobileAttributeExtractor"/>
+            <searchAttribute name="name" class="cn.zjy.demo.cache.UserNameAttributeExtractor"/>
+        </searchable>
+    </cache>
 
 </ehcache>

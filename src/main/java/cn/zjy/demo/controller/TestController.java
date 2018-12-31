@@ -63,8 +63,18 @@ public class TestController extends BaseController {
         return map;
     }
 
-    @RequestMapping(value = "/cache", method = RequestMethod.POST)
-    public List<User> testEhcache() {
+    @RequestMapping(value = "/cache/all", method = RequestMethod.POST)
+    public List<User> testGetEhcache() {
         return ehcacheService.getUsersFromCache();
+    }
+
+    @RequestMapping(value = "/cache/clear", method = RequestMethod.POST)
+    public void testClearEhcache() {
+        ehcacheService.clearAllCache();
+    }
+
+    @RequestMapping(value = "/cache/get/{mobile}", method = RequestMethod.POST)
+    public void testGetParam(@PathVariable(name = "mobile") String mobile) {
+        ehcacheService.searchCacheWithParam(mobile);
     }
 }
