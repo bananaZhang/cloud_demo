@@ -1,11 +1,10 @@
 package cn.zjy.demo.controller;
 
-import cn.zjy.demo.common.annotation.OperationLog;
 import cn.zjy.demo.controller.base.BaseController;
 import cn.zjy.demo.model.User;
 import cn.zjy.demo.req.OrgUserAddReq;
+import cn.zjy.demo.service.EhcacheService;
 import cn.zjy.demo.service.UserService;
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,25 +26,8 @@ public class TestController extends BaseController {
 
     @Autowired
     private UserService userService;
-
-    @OperationLog(module = "LOGIN")
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public User login(@RequestBody JSONObject jsonObject) {
-        Integer userId = jsonObject.getInteger("userId");
-        log.debug("token = {}", token.get());
-        return userService.getUser(userId);
-    }
-
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public User logout(@RequestBody JSONObject jsonObject) {
-        Integer userId = jsonObject.getInteger("userId");
-        return userService.getUser(userId);
-    }
-
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
-    public List<User> getUserList() {
-        return userService.queryAllUser();
-    }
+    @Autowired
+    private EhcacheService ehcacheService;
 
     /**
      * 可通过@RequestHeader获取请求header中的值
@@ -79,5 +61,10 @@ public class TestController extends BaseController {
         map.put("111", "A");
         map.put("222", "B");
         return map;
+    }
+
+    @RequestMapping(value = "/cache", method = RequestMethod.POST)
+    public List<User> testEhcache() {
+        return ehcacheService.getUsersFromCache();
     }
 }

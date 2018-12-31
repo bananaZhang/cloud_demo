@@ -2,11 +2,14 @@ package cn.zjy.demo.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class Task {
+public class Task implements Serializable {
 
+    private static final long serialVersionUID = 2898836333612544833L;
+    
     private Integer id;
 
     private String patientId;

@@ -10,7 +10,7 @@
         </encoder>
     </appender>
 
-    <logger name="cn.zjy.demo" level="INFO" additivity="false">
+    <logger name="cn.zjy.demo" level="DEBUG" additivity="false">
         <appender-ref ref="std"/>
     </logger>
 

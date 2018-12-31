@@ -21,7 +21,7 @@ import java.util.Date;
 @Table(name = "demo_user")
 @Data
 @Builder
-public class User {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 7212856431205663278L;
 
