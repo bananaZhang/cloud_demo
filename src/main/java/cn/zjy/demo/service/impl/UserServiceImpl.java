@@ -1,8 +1,8 @@
 package cn.zjy.demo.service.impl;
 
 import cn.zjy.demo.dao.UserDao;
-import cn.zjy.demo.model.User;
 import cn.zjy.demo.handler.OperLogHandler;
+import cn.zjy.demo.model.User;
 import cn.zjy.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
 
         User user = userDao.queryUserByUserId(userId);// 事务提交后才会释放锁，且不会阻塞整表查询（读的是更新前的数据）
 
-	    user.setName("测试");user.toString();
-	    userDao.updateUser(user);
+        user.setName("测试");
+        userDao.updateUser(user);
 
 //        log.debug("start sleep...");
 //        try {

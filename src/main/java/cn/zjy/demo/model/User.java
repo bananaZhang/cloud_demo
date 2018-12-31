@@ -38,6 +38,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "age")
+    private Integer age;
+
     @Column(name = "other_contact")
     private String otherContact;
 
@@ -56,11 +59,12 @@ public class User {
     private Integer status;
 
     @AutomapConstructor
-    public User(Integer userId, String mobile, String name, String email, String otherContact, Date createTime, Date updateTime, Integer status) {
+    public User(Integer userId, String mobile, String name, String email, Integer age, String otherContact, Date createTime, Date updateTime, Integer status) {
         this.userId = userId;
         this.mobile = mobile;
         this.name = name;
         this.email = email;
+        this.age = age;
         this.otherContact = otherContact;
         this.createTime = createTime;
         this.updateTime = updateTime;
