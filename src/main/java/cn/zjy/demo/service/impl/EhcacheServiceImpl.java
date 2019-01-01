@@ -86,9 +86,10 @@ public class EhcacheServiceImpl implements EhcacheService {
         Query query = userCache.createQuery();
         query.addCriteria(mobile.eq(mobileParam));
 
-        query.includeAttribute(mobile);
+//        query.includeAttribute(mobile);
 
-        Results results = query.execute();
+        // 查询结果包括key和value
+        Results results = query.includeKeys().includeValues().execute();
         for (Result result : results.all()) {
 //            //结果中包含key时可以获取key
 //            if (results.hasKeys()) {
