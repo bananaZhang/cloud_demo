@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,9 +32,18 @@ public class OperationLogAspect {
     @Autowired
     private OperateLogService operateLogService;
 
-    // 在@OperationLog注解的地方进行日志记录
+    /**
+     * 在@OperationLog注解的地方进行日志记录
+     */
     @Pointcut("@annotation(cn.zjy.demo.common.annotation.OperationLog)")
     public void logAspectPoint() {
+    }
+
+    /**
+     * 在切点中带入参数
+     */
+    @Pointcut("execution(* cn.zjy.demo.service.impl.UserServiceImpl.getUser(Integer)) && args(userId)")
+    public void getUserPoint(Integer userId){
     }
 
     /**
@@ -66,4 +76,9 @@ public class OperationLogAspect {
         operateLogService.save(log);
     }
 
+    @Before("getUserPoint(userId)")
+    public void beforeGetUser(Integer userId) {
+        log.debug("=====获取用户前的操作=====");
+        log.debug("userId = {}", userId);
+    }
 }
