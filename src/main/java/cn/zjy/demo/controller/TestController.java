@@ -39,12 +39,6 @@ public class TestController extends BaseController {
         return "success";
     }
 
-    @RequestMapping(value = "/thread")
-    public String threadTest() {
-        userService.threadPool();
-        return "success";
-    }
-
     /**
      * @function 测试请求类中的内部类能不能映射到
      * @author ZJY 2018/10/29 20:01

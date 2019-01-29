@@ -14,13 +14,11 @@ public interface UserService {
 
     public User getUser(Integer userId);
 
-	void threadPool();
+    List<User> queryAllUser();
 
-	List<User> queryAllUser();
+    int modifyUserName(Integer userId, String name);
 
-	int modifyUserName(Integer userId, String name);
+    int addUser(User user);
 
-	int addUser(User user);
-
-	User getUserByMobile(String mobile);
+    User getUserByMobile(String mobile);
 }
