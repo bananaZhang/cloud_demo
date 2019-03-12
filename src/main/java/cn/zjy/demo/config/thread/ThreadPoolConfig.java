@@ -1,4 +1,4 @@
-package cn.zjy.demo.common.thread;
+package cn.zjy.demo.config.thread;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
