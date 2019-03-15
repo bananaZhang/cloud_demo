@@ -65,6 +65,7 @@ public class OperationLogAspect {
         // 获取请求IP
         String ip = IpUtil.getUserIpAddr(request);
         log.debug("请求的IP是:{}", ip);
+        log.debug("请求的URL是:{}", request.getRequestURI());
 
         OperateLog log = new OperateLog();
         log.setUserId(1);
