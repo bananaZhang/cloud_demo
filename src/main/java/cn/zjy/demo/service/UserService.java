@@ -20,5 +20,5 @@ public interface UserService {
 
     int addUser(User user);
 
-    User getUserByMobile(String mobile);
+    User getUserByMobileWithLock(String mobile);
 }

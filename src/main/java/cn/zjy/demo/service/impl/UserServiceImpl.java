@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByMobile(String mobile) {
-        return userDao.queryUserByMobile(mobile);
+    public User getUserByMobileWithLock(String mobile) {
+        return userDao.queryUserByMobileWithLock(mobile);
     }
 }

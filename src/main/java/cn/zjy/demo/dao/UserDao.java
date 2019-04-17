@@ -18,7 +18,7 @@ import java.util.List;
 public interface UserDao {
     User queryUserByUserId(@Param("userId") Integer userId);
 
-    User queryUserByMobile(@Param("mobile") String mobile);
+    User queryUserByMobileWithLock(@Param("mobile") String mobile);
 
     List<User> queryAll();
 
