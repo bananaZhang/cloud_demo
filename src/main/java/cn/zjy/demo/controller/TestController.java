@@ -5,6 +5,7 @@ import cn.zjy.demo.model.User;
 import cn.zjy.demo.req.OrgUserAddReq;
 import cn.zjy.demo.service.EhcacheService;
 import cn.zjy.demo.service.UserService;
+import cn.zjy.demo.websocket.WebSocket;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -74,4 +75,9 @@ public class TestController extends BaseController {
         ehcacheService.searchCacheWithParam(mobile);
     }
     /* ------------------ehcache缓存------------------ */
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public void justTest() {
+        WebSocket.sendMsg("1111111111111111111111", 1);
+    }
 }

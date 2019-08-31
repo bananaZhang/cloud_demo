@@ -8,8 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -26,14 +28,24 @@ import java.util.Date;
 @Aspect
 @Component
 @Slf4j
+//@Order(1)
 public class OperationLogAspect {
 
     @Autowired
     private OperateLogService operateLogService;
 
-    // 在@OperationLog注解的地方进行日志记录
+    /**
+     * 在@OperationLog注解的地方进行日志记录
+     */
     @Pointcut("@annotation(cn.zjy.demo.common.annotation.OperationLog)")
     public void logAspectPoint() {
+    }
+
+    /**
+     * 在切点中带入参数
+     */
+    @Pointcut("execution(* cn.zjy.demo.service.impl.UserServiceImpl.getUser(Integer)) && args(userId)")
+    public void getUserPoint(Integer userId){
     }
 
     /**
@@ -51,10 +63,10 @@ public class OperationLogAspect {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String token = request.getHeader("token");
         log.debug("请求TOKEN是:{}", token);
-        // TODO Ris通过token获取userId、role、orgNo等信息
         // 获取请求IP
         String ip = IpUtil.getUserIpAddr(request);
         log.debug("请求的IP是:{}", ip);
+        log.debug("请求的URL是:{}", request.getRequestURI());
 
         OperateLog log = new OperateLog();
         log.setUserId(1);
@@ -66,4 +78,14 @@ public class OperationLogAspect {
         operateLogService.save(log);
     }
 
+    @After("getUserPoint(userId)")
+    public void beforeGetUser(Integer userId) {
+        log.debug("=====获取用户后的操作=====");
+        log.debug("userId = {}", userId);
+        // 这里设置userId=3时抛出异常，目的是测试aop中的异常能否回滚掉主代码的事务
+        // 经测试：只要在切面上加了@Order注解，这里的异常就不会回滚掉主代码的事务；如果没有加@Order注解，就会回滚掉，可见@Transactional的优先级应该是很高的
+        if (userId == 3) {
+            throw new RuntimeException("rollback transaction");
+        }
+    }
 }

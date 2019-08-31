@@ -49,13 +49,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void threadPool() {
-        log.debug("getUser...");
-        operLogHandler.doAsync();
-        log.debug("after operLog...");
-    }
-
-    @Override
     public List<User> queryAllUser() {
         return userDao.queryAll();
     }
@@ -73,7 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByMobile(String mobile) {
-        return userDao.queryUserByMobile(mobile);
+    public User getUserByMobileWithLock(String mobile) {
+        return userDao.queryUserByMobileWithLock(mobile);
     }
 }

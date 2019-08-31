@@ -37,7 +37,7 @@ public class DemoApplicationTests {
     @Transactional
     @Test
     public void addUser() {
-        User user = userService.getUserByMobile("110110110");
+        User user = userService.getUserByMobileWithLock("110110110");
         System.out.println(user);
     }
 

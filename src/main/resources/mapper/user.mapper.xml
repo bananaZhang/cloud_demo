@@ -21,7 +21,7 @@
         SELECT * FROM demo_user WHERE user_id = #{userId};
     </select>
 
-    <select id="queryUserByMobile" resultMap="BaseMap">
+    <select id="queryUserByMobileWithLock" resultMap="BaseMap">
         SELECT * FROM demo_user WHERE mobile = #{mobile} FOR UPDATE;
     </select>
 
