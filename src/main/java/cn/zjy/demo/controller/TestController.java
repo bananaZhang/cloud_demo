@@ -76,6 +76,7 @@ public class TestController extends BaseController {
     }
     /* ------------------ehcache缓存------------------ */
 
+
     @RequestMapping(value = "/test", method = RequestMethod.POST)
     public void justTest() {
         WebSocket.sendMsg("1111111111111111111111", 1);
