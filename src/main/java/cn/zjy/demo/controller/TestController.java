@@ -39,6 +39,9 @@ public class TestController extends BaseController {
         return "success";
     }
 
+    /**
+     * 测试@Async注解开启多线程
+     */
     @RequestMapping(value = "/thread")
     public String threadTest() {
         userService.threadPool();
@@ -55,14 +58,7 @@ public class TestController extends BaseController {
         return "success";
     }
 
-    @RequestMapping(value = "/map", method = RequestMethod.POST)
-    public Map<String, String> getMap() {
-        Map<String, String> map = new HashMap<>();
-        map.put("111", "A");
-        map.put("222", "B");
-        return map;
-    }
-
+    /* ------------------ehcache缓存------------------ */
     @RequestMapping(value = "/cache/all", method = RequestMethod.POST)
     public List<User> testGetEhcache() {
         return ehcacheService.getUsersFromCache();
@@ -77,4 +73,5 @@ public class TestController extends BaseController {
     public void testGetParam(@PathVariable(name = "mobile") String mobile) {
         ehcacheService.searchCacheWithParam(mobile);
     }
+    /* ------------------ehcache缓存------------------ */
 }
