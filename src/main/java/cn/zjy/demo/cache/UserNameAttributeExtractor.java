@@ -1,6 +1,6 @@
 package cn.zjy.demo.cache;
 
-import cn.zjy.demo.model.User;
+import cn.zjy.demo.bean.model.User;
 import net.sf.ehcache.Element;
 import net.sf.ehcache.search.attribute.AttributeExtractor;
 import net.sf.ehcache.search.attribute.AttributeExtractorException;

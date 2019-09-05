@@ -1,8 +1,7 @@
-package cn.zjy.demo.model;
+package cn.zjy.demo.bean.model;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
 import lombok.Data;
 import org.apache.ibatis.annotations.AutomapConstructor;
 

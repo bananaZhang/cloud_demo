@@ -1,4 +1,4 @@
-package cn.zjy.demo.req;
+package cn.zjy.demo.bean.req;
 
 import lombok.Builder;
 

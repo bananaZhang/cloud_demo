@@ -1,6 +1,6 @@
 package cn.zjy.demo.dao;
 
-import cn.zjy.demo.model.OperateLog;
+import cn.zjy.demo.bean.model.OperateLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 

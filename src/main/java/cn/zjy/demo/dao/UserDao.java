@@ -1,6 +1,6 @@
 package cn.zjy.demo.dao;
 
-import cn.zjy.demo.model.User;
+import cn.zjy.demo.bean.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;

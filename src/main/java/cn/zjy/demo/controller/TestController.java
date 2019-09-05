@@ -1,8 +1,8 @@
 package cn.zjy.demo.controller;
 
 import cn.zjy.demo.controller.base.BaseController;
-import cn.zjy.demo.model.User;
-import cn.zjy.demo.req.OrgUserAddReq;
+import cn.zjy.demo.bean.model.User;
+import cn.zjy.demo.bean.req.OrgUserAddReq;
 import cn.zjy.demo.service.EhcacheService;
 import cn.zjy.demo.service.UserService;
 import cn.zjy.demo.websocket.WebSocket;
@@ -10,9 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author ZJY

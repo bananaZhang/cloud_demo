@@ -1,6 +1,6 @@
 package cn.zjy.demo.service;
 
-import cn.zjy.demo.model.User;
+import cn.zjy.demo.bean.model.User;
 
 import java.util.List;
 

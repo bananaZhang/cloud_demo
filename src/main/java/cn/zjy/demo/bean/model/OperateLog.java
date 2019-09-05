@@ -1,4 +1,4 @@
-package cn.zjy.demo.model;
+package cn.zjy.demo.bean.model;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
