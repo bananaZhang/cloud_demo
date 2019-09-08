@@ -1,6 +1,5 @@
 package cn.zjy.demo.service.impl;
 
-import cn.zjy.demo.dao.UserDao;
 import cn.zjy.demo.bean.model.User;
 import cn.zjy.demo.service.EhcacheService;
 import cn.zjy.demo.service.UserService;
@@ -36,6 +35,8 @@ public class EhcacheServiceImpl implements EhcacheService {
 
     @Resource
     private UserService userService;
+    // cacheManager要用@Autowired注解，autowired注解时根据type注入的，由于@resource时按照name，spring中也有cacheManager这个类
+    // 会导致注入失败
     @Autowired
     private CacheManager cacheManager;
 
