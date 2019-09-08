@@ -36,7 +36,7 @@ public class EhcacheServiceImpl implements EhcacheService {
 
     @Resource
     private UserService userService;
-    @Resource
+    @Autowired
     private CacheManager cacheManager;
 
     /**
@@ -67,13 +67,13 @@ public class EhcacheServiceImpl implements EhcacheService {
         Attribute<String> mobile = userCache.getSearchAttribute("mobile");
 
         //-----------------------
-        User user1 = new User(1, "15111111111", "hehe", "123@qq.com", 15,
+        User user1 = new User(1L, "15111111111", "hehe", "123@qq.com", 15,
                 "1234", new Date(), new Date(), 1);
 
-        User user2 = new User(2, "15111111110", "heihei", "123@qq.com", 25,
+        User user2 = new User(2L, "15111111110", "heihei", "123@qq.com", 25,
                 "5678", new Date(), new Date(), 1);
 
-        User user3 = new User(3, "15111111112", "xixi", "123@qq.com", 25,
+        User user3 = new User(3L, "15111111112", "xixi", "123@qq.com", 25,
                 "9012", new Date(), new Date(), 1);
 
         Element element = new Element(user1.getUserId(), user1);

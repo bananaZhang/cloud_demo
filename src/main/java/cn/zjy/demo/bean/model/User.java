@@ -22,7 +22,7 @@ public class User implements Serializable {
 
     @TableId(type = IdType.AUTO)
     @TableField("user_id")
-    private Integer userId;
+    private Long userId;
 
     @TableField("mobile")
     private String mobile;
@@ -53,9 +53,13 @@ public class User implements Serializable {
     @TableField(value = "update_time", insertStrategy = FieldStrategy.NEVER, updateStrategy = FieldStrategy.NEVER)
     private Date updateTime;
 
+    // 如果没有该构造方法，查询时可能会抛出该异常java.sql.SQLDataException: Value '13100000001' is outside of valid range for type java.lang.Integer
+    // 让人匪夷所思，所以当使用lombok注解并自己写了构造方法时，一定要加上无参构造方法，要养成习惯
+    public User() {
+    }
 
-    @AutomapConstructor
-    public User(Integer userId, String mobile, String name, String email, Integer age, String otherContact, Date createTime, Date updateTime, Integer status) {
+    // 使用lombok注解时写了该构造方法一定要再写一个无参构造方法，否则会导致mybatis映射字段异常
+    public User(Long userId, String mobile, String name, String email, Integer age, String otherContact, Date createTime, Date updateTime, Integer status) {
         this.userId = userId;
         this.mobile = mobile;
         this.name = name;
