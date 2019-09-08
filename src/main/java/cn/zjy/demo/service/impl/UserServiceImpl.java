@@ -4,11 +4,14 @@ import cn.zjy.demo.dao.UserDao;
 import cn.zjy.demo.handler.OperLogHandler;
 import cn.zjy.demo.bean.model.User;
 import cn.zjy.demo.service.UserService;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 
@@ -20,32 +23,10 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
 
-    @Autowired
+    @Resource
     private OperLogHandler operLogHandler;
-    @Autowired
-    private UserDao userDao;
-
-    @Override
-    @Transactional
-    public User getUser(Integer userId) {
-
-
-        User user = userDao.queryUserByUserId(userId);// 事务提交后才会释放锁，且不会阻塞整表查询（读的是更新前的数据）
-
-        user.setName("测试");
-        userDao.updateUser(user);
-
-//        log.debug("start sleep...");
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        log.debug("end sleep...");
-        return user;
-    }
 
     @Override
     public void threadPool() {
@@ -56,23 +37,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> queryAllUser() {
-        return userDao.queryAll();
+        return this.queryAllUser();
     }
 
     @Override
-    public int modifyUserName(Integer userId, String name) {
-        User user = userDao.queryUserByUserId(userId);
-        user.setName(name);
-        return userDao.updateUser(user);
-    }
-
-    @Override
-    public int addUser(User user) {
-        return userDao.addUser(user);
-    }
-
-    @Override
-    public User getUserByMobileWithLock(String mobile) {
-        return userDao.queryUserByMobileWithLock(mobile);
+    public void modifyUserName(Integer userId, String name) {
+        this.update(Wrappers.<User>lambdaUpdate().eq(User::getUserId, userId).set(User::getName, name));
     }
 }

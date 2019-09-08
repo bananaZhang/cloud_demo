@@ -36,13 +36,6 @@ public class DemoApplicationTests {
 
     @Transactional
     @Test
-    public void addUser() {
-        User user = userService.getUserByMobileWithLock("110110110");
-        System.out.println(user);
-    }
-
-    @Transactional
-    @Test
     public void queryAllUser() {
         List<User> userList = userService.queryAllUser();
         userList.sort((o1, o2) -> o2.getCreateTime().compareTo(o1.getCreateTime()));

@@ -1,6 +1,7 @@
 package cn.zjy.demo.service;
 
 import cn.zjy.demo.bean.model.User;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 
@@ -10,17 +11,12 @@ import java.util.List;
  * @Description: UserService
  * @date 2018/8/1 14:33
  */
-public interface UserService {
-
-    public User getUser(Integer userId);
+public interface UserService extends IService<User> {
 
     void threadPool();
 
     List<User> queryAllUser();
 
-    int modifyUserName(Integer userId, String name);
+    void modifyUserName(Integer userId, String name);
 
-    int addUser(User user);
-
-    User getUserByMobileWithLock(String mobile);
 }

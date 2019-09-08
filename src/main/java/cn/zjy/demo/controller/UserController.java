@@ -25,27 +25,17 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/id/{userId}", method = RequestMethod.GET)
-    public User getUser(@PathVariable("userId") Integer userId) {
-        return null;
-    }
-
     @OperationLog(module = "LOGIN")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User login(@RequestBody JSONObject jsonObject) {
         Integer userId = jsonObject.getInteger("userId");
         log.debug("token = {}", token.get());
-        return userService.getUser(userId);
+        return userService.getById(userId);
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public User logout(@RequestBody JSONObject jsonObject) {
         Integer userId = jsonObject.getInteger("userId");
-        return userService.getUser(userId);
-    }
-
-    @RequestMapping(value = "/all", method = RequestMethod.POST)
-    public List<User> getUserList() {
-        return userService.queryAllUser();
+        return userService.getById(userId);
     }
 }

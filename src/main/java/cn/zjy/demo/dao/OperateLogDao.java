@@ -1,8 +1,8 @@
 package cn.zjy.demo.dao;
 
 import cn.zjy.demo.bean.model.OperateLog;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Service;
 
 /**
  * @author ZJY
@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
  * @date 2018/8/23 16:03
  */
 @Mapper
-@Service
-public interface OperateLogDao {
+public interface OperateLogDao extends BaseMapper<OperateLog> {
 
-    int save(OperateLog operateLog);
 }

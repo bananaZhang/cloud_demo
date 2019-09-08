@@ -3,6 +3,7 @@ package cn.zjy.demo.service.impl;
 import cn.zjy.demo.dao.UserDao;
 import cn.zjy.demo.bean.model.User;
 import cn.zjy.demo.service.EhcacheService;
+import cn.zjy.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
@@ -16,6 +17,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -32,9 +34,9 @@ import java.util.List;
 @Slf4j
 public class EhcacheServiceImpl implements EhcacheService {
 
-    @Autowired
-    private UserDao userDao;
-    @Autowired
+    @Resource
+    private UserService userService;
+    @Resource
     private CacheManager cacheManager;
 
     /**
@@ -47,7 +49,7 @@ public class EhcacheServiceImpl implements EhcacheService {
     @Override
     public List<User> getUsersFromCache() {
         log.info("缓存未命中，从db查询...");
-        return userDao.queryAll();
+        return userService.queryAllUser();
     }
 
     /**
